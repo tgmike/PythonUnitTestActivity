@@ -3,6 +3,7 @@ import unittest
 from classes.validator import Validator
 
 
+
 class TestValidator(unittest.TestCase):
 
     def setUp(self):
@@ -31,6 +32,16 @@ class TestValidator(unittest.TestCase):
     def test_it_will_reject_username_if_there_is_no_uppercase_characters(self):
         # Assume
         username = 'reval'
+
+        # Action
+        result = self.validator.username_is_valid(username)
+
+        # Assert
+        self.assertFalse(result)
+        
+    def test_it_will_reject_username_if_there_is_a_special_character(self):
+        # Assume
+        username = 'Reval$%^&*()#@'
 
         # Action
         result = self.validator.username_is_valid(username)
